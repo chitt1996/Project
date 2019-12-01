@@ -59,18 +59,15 @@
                                                             <td><img style="width: 100px; height: 100px;" src="{{ $course->image }}" alt=""></td>
                                                             <td>{{ $course->category->name }}</td>
                                                             <td>
-                                                                <a href="#" class="btn @if ($course->status == 0)
-                                                                        btn-success
-                                                                    @else
-                                                                        btn-warning
-                                                                    @endif "><i class="fa fa-pencil"
-                                                                        aria-hidden="true"></i>
-                                                                    @if ($course->status == 0)
-                                                                    {{ trans('setting.open') }}
-                                                                    @else
-                                                                    {{ trans('setting.waiting') }}
-                                                                    @endif
-                                                                </a>
+                                                                @if ($course->status == false)
+                                                                    <button class="btn btn-success">
+                                                                        <i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('setting.open') }}
+                                                                    </button>
+                                                                @else
+                                                                    <button class="btn btn-success">
+                                                                        <i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('setting.waiting') }}
+                                                                    </button>
+                                                                @endif
                                                             </td>
                                                             <td>
                                                                 <p>{{ $course->description }}</p>
