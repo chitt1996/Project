@@ -1,38 +1,38 @@
 @extends('admin.layouts.main')
-@section('title', 'List User')
+@section('title', config('configuser.list_user'))
 @section('content')
 <div id="content-wrapper">
     <div class="container-fluid">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="#">{{ trans('setting.dashboard') }}</a>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active">@yield('title')</li>
         </ol>
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-user"></i>
-                <span>List User</span>
+                <span>@yield('title')</span>
                 <div class="card-body">
                     <div>
                         <div class="bootstrap-table">
                             <div class="table-responsive">
-                                <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Thêm Thành viên</a>
+                                <a href="{{ route('admin.users.create') }}" class="btn btn-primary">{{ trans('setting.add_user') }}</a>
                                 <hr>
                                 @if (session('alert'))
                                     <div class="alert alert-success"><i class="fas fa-check"></i>{{ session('alert') }}</div>
                                 @endif
-                                <table class="table table-bordered" style="margin-top:20px;">
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr class="bg-primary">
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>avatar</th>
-                                            <th>Email</th>
-                                            <th>Address</th>
-                                            <th>Phone</th>
-                                            <th>Level</th>
-                                            <th width='18%'>Tùy chọn</th>
+                                            <th>{{ trans('setting.id') }}</th>
+                                            <th>{{ trans('setting.name') }}</th>
+                                            <th>{{ trans('setting.avatar') }}</th>
+                                            <th>{{ trans('setting.email') }}</th>
+                                            <th>{{ trans('setting.address') }}</th>
+                                            <th>{{ trans('setting.phone') }}</th>
+                                            <th>{{ trans('setting.role') }}</th>
+                                            <th>{{ trans('setting.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,28 +40,19 @@
                                         <tr>
                                             <td>{{ $user->id }}</td>
                                             <td><b>{{ $user->name }} <b></td>
-                                            <td><img style="width: 100px; height: 100px; border-radius: 8px;" id="avatar-user" src="{{ $user->avatar }}"></td>
+                                            <td><img class="avt" id="avatar-user" src="{{ $user->avatar }}"></td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->address }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>
-                                                <button class="btn 
                                                 @if ($user->role_id == false)
-                                                    btn-success    
+                                                    <button class="btn btn-success">{{ trans('setting.trainee') }}</button>
                                                 @else
-                                                    btn-danger
+                                                    <button class="btn btn-danger">{{ trans('setting.supervisor') }}</button>
                                                 @endif
-                                                ">
-                                                    @if ($user->role_id == false)
-                                                       Trainee
-                                                    @else
-                                                        Suppervisor
-                                                    @endif
-                                                </button>
                                             </td>
                                             <td>
-                                                <form action="{{ route('admin.users.destroy', $user->id) }}"
-                                                    method="post">
+                                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     @if (Auth::User()->role_id >= $user->role_id)
@@ -89,13 +80,7 @@
                 </div>
             </div>
         </div>
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © Your Website 2019</span>
-                </div>
-            </div>
-        </footer>
+        @include('admin.layouts.footer')
     </div>
 </div>
 @endsection
