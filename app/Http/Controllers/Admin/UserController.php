@@ -10,6 +10,7 @@ use App\Repositories\Course\CourseRepositoryInterface;
 use App\Repositories\Subject\SubjectRepositoryInterface;
 use App\Repositories\Task\TaskRepositoryInterface;
 use App\Notifications\NotificationUser;
+use Pusher\Pusher;
 use DB;
 class UserController extends Controller
 {
@@ -85,6 +86,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.create')->with('alert', trans('setting.checkpassoword'));
         }
     }
+
     public function uploadAvatar(UserRequest $request)
     {
         $destinationDir = public_path(config('configuser.public_path'));
@@ -231,12 +233,6 @@ class UserController extends Controller
                         $courseName = $this->courseRepository->find($request->course_id)->name;
                         $data = [
                             'name' => $courseName,
-                            'course_id' => $request->course_id,
-                        ];
-                        $user->notify(new NotificationUser($data));
-                        $subjectName = $this->subjectRepository->find($request->subject_id)->name;
-                        $data = [
-                            'name' => $subjectName,
                             'course_id' => $request->course_id,
                         ];
                         $user->notify(new NotificationUser($data));

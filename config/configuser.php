@@ -13,4 +13,12 @@ return [
     'checkUserCourse' => 1,
     'checkUserSubject' => 1,
     'userSubject' => 1,
+    'create_user' => 'Create User',
+    'trainee' => 0,
+    'supervisor' => 1,
+    'avatar' => '/images/avatar.jpg',
+    'edit_user' => 'Edit User',
+    'list_user' => 'List User',
+    'show_user' => 'Show User',
+    'status_activity' => 1,
 ];

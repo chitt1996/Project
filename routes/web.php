@@ -12,3 +12,6 @@
 */
 Auth::routes();
 
+Route::get('users/{id}', function ($id) {
+    return view ('client.contact.contact');
+});

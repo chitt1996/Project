@@ -99,20 +99,12 @@
     var notificationsCountElem = notificationsToggle.find('i[data-count]');
     var notificationsCount = parseInt(notificationsCountElem.data('count'));
     var notifications = notificationsWrapper.find('ul.dropdown-menu');
-
-
-    // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-
-    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+    var pusher = new Pusher('7b587762f002439f1020', {
         cluster: 'ap1',
         encrypted: true,
     });
-
-    // Subscribe to the channel we specified in our Laravel Event
     var channel = pusher.subscribe('NotificationEvent');
-
-    // Bind a function to a Event (the full Laravel class)
     channel.bind('message1', function (data) {
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
@@ -134,7 +126,6 @@
             </div>
         </li>`;
         notifications.html(newNotificationHtml + existingNotifications);
-
         notificationsCount += 1;
         notificationsCountElem.attr('data-count', notificationsCount);
         notificationsWrapper.find('.notif-count').text(notificationsCount);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "064c76bdf3ba3fa503e6ccc499a394eb",
+    "content-hash": "275c883295a6b22bb8b3ff5fdb7cb935",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
@@ -5012,6 +5012,7 @@
                 "code",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2019-12-10T19:21:15+00:00"
         },
         {
@@ -5066,6 +5067,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2018-04-25T15:33:34+00:00"
         }
     ],
@@ -5460,16 +5462,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v5.6.3",
+            "version": "v5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "c342e3e802607d0ca081b6b8021811e218b5fe5d"
+                "reference": "5a160ed9ca39dcde910d971733fa750a5eb1d329"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/c342e3e802607d0ca081b6b8021811e218b5fe5d",
-                "reference": "c342e3e802607d0ca081b6b8021811e218b5fe5d",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/5a160ed9ca39dcde910d971733fa750a5eb1d329",
+                "reference": "5a160ed9ca39dcde910d971733fa750a5eb1d329",
                 "shasum": ""
             },
             "require": {
@@ -5524,7 +5526,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2019-12-03T21:07:05+00:00"
+            "time": "2019-12-30T21:45:39+00:00"
         },
         {
             "name": "laravel/ui",
