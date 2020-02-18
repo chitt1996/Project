@@ -7,10 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Mail\CourseMail;
-use Mail;
 
-class JobMail implements ShouldQueue
+class JobSendmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -19,13 +17,9 @@ class JobMail implements ShouldQueue
      *
      * @return void
      */
-    public $data;
-    public $users;
-
-    public function __construct($data, $users)
+    public function __construct()
     {
-        $this->data = $data;
-        $this->users = $users;
+        //
     }
 
     /**
@@ -35,13 +29,6 @@ class JobMail implements ShouldQueue
      */
     public function handle()
     {
-        $data = $this->data;
-        $users = $this->users;
-        foreach($users as $user) {
-            if($user->role_id == 1) {
-                Mail::to($user->email)
-                    ->send(new CourseMail($data));
-            }
-        }
+        //
     }
 }

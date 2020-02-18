@@ -7,19 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CourseMail extends Mailable implements ShouldQueue
+class SendMailFriday extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct()
     {
-        $this->data = $data;
+        //
     }
 
     /**
@@ -29,10 +28,6 @@ class CourseMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $data = $this->data;
-        return $this->from('kien.112.98@gmail.com', 'FTMS')
-            ->subject('List course & member')
-            ->markdown('client.mail.example')
-            ->with(['data' => $data]);
+        return $this->view('client.mail.form');
     }
 }
