@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class InitSubjectSeeder extends Seeder
+class SubjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,11 +11,12 @@ class InitSubjectSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 10; $i++) {
+        $faker = Faker\Factory::create();
+
+        for ($i=0; $i <= 50; $i++) { 
             DB::table('subjects')->insert([
-                'name' => 'Subject '.$i,
-                'description' => 'Subject '.$i,
-                'status' => '0',
+                'name' => $faker->unique()->text(20),
+                'description' => $faker->unique()->text(2000),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

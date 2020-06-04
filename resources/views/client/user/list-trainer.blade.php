@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             @foreach ($trainer as $user)
-                <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="teacher-outer">
                         <div class="teacher-img">
                             <img src="{{ $user->avatar }}" alt="instructor-img1">
