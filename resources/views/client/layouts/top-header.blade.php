@@ -21,15 +21,27 @@
                         @if (Auth::check())
                             <li class="nav-item dropdown dropdown-notifications">
                                 <a style="color: white;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                     Notification <i class="fa fa-bell"></i><span class="caret"></span>
+                                     Notification <i class="fa fa-bell"></i> 
+                                     (<span class="notif-count">0</span>)
+                                     <span class="caret"></span>
                                 </a>
-                                <div style="width: 400px; min-height: 300px; padding: 20px;" class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
                                     @forelse (Auth::user()->notifications as $notification)
-                                        <a class="dropdown-item" href="{{ route('course.show', $notification->data['course_id']) }}">
-                                            <span>Bạn Đã Được Thêm Vào {{ $notification->data['name'] }}| {{ $notification->create_at }} </span><br>
-                                        </a>
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <div class="media-object">
+                                                    <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="50x50">
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <strong class="notification-title">{{ $notification->data['title'] }}</strong>
+                                                <div class="notification-meta">
+                                                    <small class="timestamp">about a minute ago</small>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @empty
-                                        <p style="color: black;">Empty</p>
+                                        {{-- <p style="color: black;">Empty</p> --}}
                                     @endforelse
                                 </div>
                             </li>

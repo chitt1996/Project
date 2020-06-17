@@ -3671,3 +3671,25 @@ footer .f-sicon>h2 {
 #subjects table tbody tr td:last-child {
 	text-align: center;
 }
+.top-header div.dropdown-menu {
+	width: 400px; 
+	min-height: 300px; 
+	padding: 20px; 
+	color: black;
+	height: 400px;
+    overflow: auto;
+}
+.top-header div.dropdown-menu div.media{
+	background: lightblue; 
+	border-radius: 5px; 
+	margin-bottom: 1px; 
+	margin-top: 1px;
+}
+.top-header div.dropdown-menu div.media div.media-object {
+	width: 60px;
+}
+.top-header div.dropdown-menu div.media div.media-object img {
+	width: 45px; 
+	height: 45px; 
+	margin: 5px;
+}

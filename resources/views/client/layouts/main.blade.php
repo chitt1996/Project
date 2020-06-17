@@ -20,18 +20,18 @@
 	<link href="{{ asset('assets/client/assets/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
 	<link href="{{ asset('assets/client/assets/owl-carousel/owl.theme.css') }}" rel="stylesheet">
 	{{-- Full Calendar Package --}}
-	<link href="{{ asset('full_calendar/packages/core/main.css') }}"" rel='stylesheet' />
-	<link href="{{ asset('full_calendar/packages/daygrid/main.css') }}"" rel='stylesheet' />
-	<link href="{{ asset('full_calendar/packages/timegrid/main.css') }}"" rel='stylesheet' />
-	<link href="{{ asset('full_calendar/packages-premium/timeline/main.css') }}"" rel='stylesheet' />
-	<link href="{{ asset('full_calendar/packages-premium/resource-timeline/main.css') }}"" rel='stylesheet' />
-	<script src="{{ asset('full_calendar/packages/core/main.js') }}""></script>
-	<script src="{{ asset('full_calendar/packages/interaction/main.js') }}""></script>
-	<script src="{{ asset('full_calendar/packages/daygrid/main.js') }}""></script>
-	<script src="{{ asset('full_calendar/packages/timegrid/main.js') }}""></script>
-	<script src="{{ asset('full_calendar/packages-premium/timeline/main.js') }}""></script>
-	<script src="{{ asset('full_calendar/packages-premium/resource-common/main.js') }}""></script>
-	<script src="{{ asset('full_calendar/packages-premium/resource-timeline/main.js') }}""></script>
+	<link href="{{ asset('full_calendar/packages/core/main.css') }}" rel='stylesheet' />
+	<link href="{{ asset('full_calendar/packages/daygrid/main.css') }}" rel='stylesheet' />
+	<link href="{{ asset('full_calendar/packages/timegrid/main.css') }}" rel='stylesheet' />
+	<link href="{{ asset('full_calendar/packages-premium/timeline/main.css') }}" rel='stylesheet' />
+	<link href="{{ asset('full_calendar/packages-premium/resource-timeline/main.css') }}" rel='stylesheet' />
+	<script src="{{ asset('full_calendar/packages/core/main.js') }}"></script>
+	<script src="{{ asset('full_calendar/packages/interaction/main.js') }}"></script>
+	<script src="{{ asset('full_calendar/packages/daygrid/main.js') }}"></script>
+	<script src="{{ asset('full_calendar/packages/timegrid/main.js') }}"></script>
+	<script src="{{ asset('full_calendar/packages-premium/timeline/main.js') }}"></script>
+	<script src="{{ asset('full_calendar/packages-premium/resource-common/main.js') }}"></script>
+	<script src="{{ asset('full_calendar/packages-premium/resource-timeline/main.js') }}"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 {{--	@include('client.layouts.header')--}}
 	@yield('content')
 	@include('client.layouts.footer')
-	
+	<input type="hidden" name="eventPusher" id="eventPusher" value="{{ Auth::user()->id }}">
 	<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 	<script src="{{ asset('assets/client/assets/js/jquery.js') }}"></script>
 	<script src="{{ asset('assets/client/assets/js/bootstrap.min.js') }}"></script>
@@ -55,50 +55,33 @@
 	<script src="{{ asset('js/app.js') }}"></script>
 
 	<script type="text/javascript">
-	    var notificationsWrapper = $('.dropdown-notifications');
-	    var notificationsToggle = notificationsWrapper.find('a[data-toggle]');
-	    var notificationsCountElem = notificationsToggle.find('i[data-count]');
-	    var notificationsCount = parseInt(notificationsCountElem.data('count'));
-	    var notifications = notificationsWrapper.find('ul.dropdown-menu');
-
-
-	    // Enable pusher logging - don't include this in production
-	    Pusher.logToConsole = true;
-
-	    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+	    // Pusher.logToConsole = true;
+	    var pusher = new Pusher('8a6adeb53a54a1e5d748', {
 	        cluster: 'ap1',
 	        encrypted: true,
 	    });
-
-	    // Subscribe to the channel we specified in our Laravel Event
+	    var count = 0;
 	    var channel = pusher.subscribe('NotificationEvent');
-
-	    // Bind a function to a Event (the full Laravel class)
+	    var eventPusher = 'message' + $('#eventPusher').val();
+	    console.log(eventPusher);
 	    channel.bind('message1', function (data) {
-	        var existingNotifications = notifications.html();
-	        var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
-	        var newNotificationHtml =
-	        `<li class="notification active">
-	            <div class="media">
-	                <div class="media-left">
-	                    <div class="media-object">
-	                        <img src="https://api.adorable.io/avatars/71/` + avatar + `.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
-	                    </div>
-	                </div>
-	                <div class="media-body">
-	                    <strong class="notification-title">` + data.title + `</strong>
-	                    <p class="notification-desc">` + data.content + `</p>
-	                    <div class="notification-meta">
-	                        <small class="timestamp">about a minute ago</small>
-	                    </div>
-	                </div>
-	            </div>
-	        </li>`;
-	        notifications.html(newNotificationHtml + existingNotifications);
-	        notificationsCount += 1;
-	        notificationsCountElem.attr('data-count', notificationsCount);
-	        notificationsWrapper.find('.notif-count').text(notificationsCount);
-	        notificationsWrapper.show();
+	        var avatar = '';
+	        var html = `<div class="media">
+                        <div class="media-left">
+                            <div class="media-object">
+                                <img src="/images/avatar/avatar-defult.jpeg" class="img-circle" alt="50x50">
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <strong class="notification-title">` + data.title + `</strong>
+                            <div class="notification-meta">
+                                <small class="timestamp">about a minute ago</small>
+                            </div>
+                        </div>
+                    </div>`
+              count++;
+            $('span.notif-count').text(count);
+	        $('div.menu-notification').prepend(html);
 	    });
 	</script>
 
