@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
             DB::table('categories')->insert([
                 'parent_id' => $parent_id,
                 'name' => $faker->unique()->text(20),
-                'description' => $faker->unique()->text(2000),
+                'description' => $faker->unique()->text(500),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
