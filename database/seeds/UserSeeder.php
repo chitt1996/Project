@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'phone' => $faker->unique()->text(20),
                 'avatar' => '/images/avatar/avatar-defult.jpeg',
                 'role_id' => $role_id,
-                'created_at' => now(),
+                'created_at' => $faker->dateTimeBetween('-18 months'),
                 'updated_at' => now(),
             ]);
         }

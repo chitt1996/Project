@@ -199,8 +199,8 @@
                                         <img src="{{ asset('assets/client/assets/img/uc-img1.jpg') }}" alt="us-img"/>
                                     </div>
                                     <div class="upcommin-text">
-                                        <p><b><a id="showListTask" data-subject-id="{{ $subject->id }}" data-toggle="modal" data-target="#modalListTask">{{ $subject->name }}</a></b></p>
-                                        <p>{{ $subject->description }}</p>
+                                        <p><b><a class="showListTask" data-subject-id="{{ $subject->id }}" data-toggle="modal" data-target="#modalListTask">{{ $subject->name }}</a></b></p>
+                                        <p class="cut-string">{{ $subject->description }}</p>
                                         <span><i class="fa fa-clock-o" aria-hidden="true"></i>  at 9: 00 p.m by Orion mimin</span>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6">
                             <h4>Discussion</h4>
                             <div class="questions">
-                                <img src="{{ asset('assets/client/assets/img/dn-img.jpg') }}" alt="dn"> <span>Write your questions here...</span>
+                                <img src="{{ asset('assets/client/assets/img/dn-img.jpg') }}" alt="dn"> <span><input style="border: none; width: calc(100% - 128px);" type="text" name="comment" placeholder="Write your questions here..."></span>
                             </div>
                             <div class="taype-select">
                                 <a class="btn btn-default btn-select options2">

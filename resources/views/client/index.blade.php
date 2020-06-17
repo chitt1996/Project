@@ -53,7 +53,7 @@
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                     </div>
                                     <div class="description">
-                                        <p>{{ $course->description }}</p>
+                                        <p class="cut-string">{{ $course->description }}</p>
                                     </div>
                                 </div>
                             </div>

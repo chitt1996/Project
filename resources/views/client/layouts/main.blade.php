@@ -54,37 +54,6 @@
 	<script src="{{ asset('assets/client/assets/js/custom.js') }}"></script>
 	<script src="{{ asset('js/app.js') }}"></script>
 
-	<script type="text/javascript">
-	    // Pusher.logToConsole = true;
-	    var pusher = new Pusher('8a6adeb53a54a1e5d748', {
-	        cluster: 'ap1',
-	        encrypted: true,
-	    });
-	    var count = 0;
-	    var channel = pusher.subscribe('NotificationEvent');
-	    var eventPusher = 'message' + $('#eventPusher').val();
-	    console.log(eventPusher);
-	    channel.bind('message1', function (data) {
-	        var avatar = '';
-	        var html = `<div class="media">
-                        <div class="media-left">
-                            <div class="media-object">
-                                <img src="/images/avatar/avatar-defult.jpeg" class="img-circle" alt="50x50">
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <strong class="notification-title">` + data.title + `</strong>
-                            <div class="notification-meta">
-                                <small class="timestamp">about a minute ago</small>
-                            </div>
-                        </div>
-                    </div>`
-              count++;
-            $('span.notif-count').text(count);
-	        $('div.menu-notification').prepend(html);
-	    });
-	</script>
-
 	<script>
 		$.ajaxSetup({
 			headers: {
@@ -92,7 +61,8 @@
 			}
 		});
 		$(document).ready(function () {
-			$(document).on('click', '#showListTask', function () {
+			$(document).on('click', 'a.showListTask', function () {
+				alert('aaa')
 				// $('#modalListTask .form-group').append('<div id="loading-form"><img id="img-loading" src="/images/loading/loading1.gif" alt=""></div>');
 				let html = '';
 				let data = {
@@ -133,6 +103,37 @@
 			})
 		})
 	</script>
+	<script type="text/javascript">
+	    // Pusher.logToConsole = true;
+	    var pusher = new Pusher('8a6adeb53a54a1e5d748', {
+	        cluster: 'ap1',
+	        encrypted: true,
+	    });
+	    var count = 0;
+	    var channel = pusher.subscribe('NotificationEvent');
+	    var eventPusher = 'message' + $('#eventPusher').val();
+	    channel.bind('message1', function (data) {
+	        var avatar = '';
+	        var html = `<div class="media">
+                        <div class="media-left">
+                            <div class="media-object">
+                                <img src="/images/avatar/avatar-defult.jpeg" class="img-circle" alt="50x50">
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <strong class="notification-title">` + data.title + `</strong>
+                            <div class="notification-meta">
+                                <small class="timestamp">about a minute ago</small>
+                            </div>
+                        </div>
+                    </div>`
+              count++;
+            $('span.notif-count').text(count);
+	        $('div.menu-notification').prepend(html);
+	    });
+	</script>
+
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('full-event-calendar');

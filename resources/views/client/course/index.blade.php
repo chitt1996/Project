@@ -27,7 +27,7 @@
                             </div>
                             <div class="viewed-courses-text">
                                 <a href="classroom-presence.html">
-                                    <h6>{{ $course->name }}</h6>
+                                    <h3>{{ $course->name }}</h3>
                                 </a>
                                 <p>By : Adluf Gulf</p>
                                 <div class="star">
@@ -40,7 +40,7 @@
                                 <div class="price">
                                     $120 <span>$300</span>
                                 </div>
-                                <a href="#" class="ank5">Purchase Now</a>
+                                <a href="{{ route('course.show', $course->id) }}" class="ank5">Purchase Now</a>
                             </div>
                         </div>
                 </div>
