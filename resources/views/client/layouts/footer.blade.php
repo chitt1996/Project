@@ -1,4 +1,5 @@
 <footer>
+    <script lang="javascript">var __vnp = {code : 1730,key:'', secret : '6e84d5e0cac3f7e3772ac9f5364b9043'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//core.vchat.vn/code/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
     <div class="container">
         <div class="row">
             <div class="col-md-12">

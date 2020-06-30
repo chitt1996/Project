@@ -3706,6 +3706,6 @@ footer .f-sicon>h2 {
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
-.showListTask {
+.showListTask, #showTask {
 	cursor: pointer;
 }
