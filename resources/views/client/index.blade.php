@@ -32,8 +32,8 @@
                                     <img src="{{ $course->image }}" alt="coureses-img1">
                                 </div>
                                 <div class="viewed-courses-text">
-                                    <a href="classroom-presence.html">
-                                        <h6>{{ $course->name }}</h6>
+                                    <a href="{{ route('course.show', $course->id) }}">
+                                        <h4>
                                         @foreach ($course->users as $user)
                                             @if ($user->id == Auth::user()->id)
                                                 @if ($user->pivot->status == config('client.user.false'))
@@ -43,6 +43,8 @@
                                                 @endif
                                             @endif
                                         @endforeach
+                                         | {{ $course->name }}
+                                        </h4>
                                     </a>
                                     <p>By : <span>Adluf Gulf</span></p>
                                     <div class="star">
@@ -94,230 +96,56 @@
             </div>
             <div class="row">
                 <div class="owl-demo-outer">
-                    <!-- #owl-demo -->
                     <div id="owl-demo" class="owl-carousel owl-theme">
                         <div class="item">
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img1.jpg') }}" alt="instructor-img1" />
+                            @foreach ($users as $key => $user)
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <!-- .instructor -->
+                                    <div class="instructor">
+                                        <div class="instructor-img">
+                                            <img src="{{ $user->avatar }}" alt="instructor-img1" />
+                                        </div>
+                                        <h4>
+                                            <a href="#">
+                                              {{ $user->name }}<br/>
+                                              <span>Instructor, Ui/Ux Design</span>
+                                          </a>
+                                        </h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
+                                        </p>
                                     </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
+                                    <!-- /.instructor -->
                                 </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img2.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img3.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img4.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img5.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img6.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
+                            @if ($key == 2)
+                                @break
+                            @endif
+                            @endforeach
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img1.jpg') }}" alt="instructor-img1" />
+                            @foreach ($users as $key => $user)
+                                @if ($key > 2)
+                                    <div class="col-xs-12 col-sm-4 col-md-4">
+                                        <!-- .instructor -->
+                                        <div class="instructor">
+                                            <div class="instructor-img">
+                                                <img src="{{ $user->avatar }}" alt="instructor-img1" />
+                                            </div>
+                                            <h4>
+                                                <a href="#">
+                                                  {{ $user->name }}<br/>
+                                                  <span>Instructor, Ui/Ux Design</span>
+                                              </a>
+                                            </h4>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
+                                            </p>
+                                        </div>
+                                        <!-- /.instructor -->
                                     </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img2.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img3.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img4.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img5.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <!-- .instructor -->
-                                <div class="instructor">
-                                    <div class="instructor-img">
-                                        <img src="{{ asset('assets/client/assets/img/instructor-img6.jpg') }}" alt="instructor-img1" />
-                                    </div>
-                                    <h4>
-                                        <a href="#">
-                                          Felicia Richi Brown<br/>
-                                          <span>Instructor, Ui/Ux Design</span>
-                                      </a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisc elit. Praesent tellus urna, faucibus vel hendrerit Lorem ipsum dolor sit amet, consectetura Praesent tellus urna, fau
-                                    </p>
-                                </div>
-                                <!-- /.instructor -->
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
-
-                        <!-- /#owl-demo -->
                     </div>
                 </div>
             </div>

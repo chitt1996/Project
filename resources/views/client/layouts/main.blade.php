@@ -41,6 +41,7 @@
 	@include('client.layouts.footer')
 	<input type="hidden" name="eventPusher" id="eventPusher" value="{{ Auth::user()->id }}">
 	<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{ asset('assets/client/assets/js/jquery.js') }}"></script>
 	<script src="{{ asset('assets/client/assets/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/client/assets/js/bootstrap-dropdownhover.min.js') }}"></script>
@@ -53,56 +54,6 @@
 	<script src="{{ asset('assets/client/assets/owl-carousel/owl.carousel.js') }}"></script>
 	<script src="{{ asset('assets/client/assets/js/custom.js') }}"></script>
 	<script src="{{ asset('js/app.js') }}"></script>
-
-	<script>
-		$.ajaxSetup({
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}
-		});
-		$(document).ready(function () {
-			$(document).on('click', 'a.showListTask', function () {
-				alert('aaa')
-				// $('#modalListTask .form-group').append('<div id="loading-form"><img id="img-loading" src="/images/loading/loading1.gif" alt=""></div>');
-				let html = '';
-				let data = {
-					id: $(this).attr('data-subject-id')
-				}
-				$.ajax({
-					type: "GET",
-					url: "/ajax/get_list_task_of_subject",
-					data: data,
-					success: function (response) {
-						$.each(response, function (key, task) { 
-							html += '<li><div class="subject-name"><i class="fa fa-hand-o-right" aria-hidden="true"></i> <b><a id="showTask" data-task-id="' + task.id + '" data-dismiss="modal" data-toggle="modal" data-target="#modalShowTask">' + task.name + '</a></b></div><div class="subject-description">' + task.description + '</div></li>'
-						});
-						$('#modalListTask .list-subject').html(html);
-						// setTimeout(() => {
-						// 	$('#loading-form').fadeOut(500);
-						// }, 1000);
-					}
-				});
-				
-			})
-			$(document).on('click', '#showTask', function () {
-				let html = '';
-				let data = {
-					id: $(this).attr('data-task-id')
-				}
-				$.ajax({
-					type: "GET",
-					url: "/ajax/get_task",
-					data: data,
-					success: function (response) {
-						$.each(response, function (key, task) { 
-							html += '<li><div class="subject-name"><i class="fa fa-hand-o-right" aria-hidden="true"></i> <b><a data-task-id="' + task.id + '" data-dismiss="modal" data-toggle="modal" data-target="#modalShowTask">' + task.name + '</a></b></div><div class="subject-description">' + task.description + '</div></li>'
-						});
-						$('#modalListTask .list-subject').html(html);
-					}
-				});
-			})
-		})
-	</script>
 	<script type="text/javascript">
 	    // Pusher.logToConsole = true;
 	    var pusher = new Pusher('8a6adeb53a54a1e5d748', {
@@ -132,8 +83,6 @@
 	        $('div.menu-notification').prepend(html);
 	    });
 	</script>
-
-
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('full-event-calendar');

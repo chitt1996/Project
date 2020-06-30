@@ -14,7 +14,7 @@
 Route::group(['middleware' => ['auth']], function () {
     Route::get('category/{category}/show', 'CategoryController@show')->name('category.show');
 
-    Route::group(['prefix' => 'courses'], function () {
+    Route::group(['prefix' => 'courses', 'middleware' => 'checkUserCourse'], function () {
         Route::get('/', 'CourseController@index')->name('course.index');
         Route::get('/{course}/show', 'CourseController@show')->name('course.show');
         Route::get('/{course}/history', 'CourseController@history')->name('course.history');
